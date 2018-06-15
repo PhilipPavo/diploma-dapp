@@ -36,7 +36,7 @@ class HomePage extends React.Component<IHomePageProps, IHomePageState> {
 
                 {this.state.accounts.map(publicAddress => {
                     return (
-                        <Grid.Column key={publicAddress} width={4}>
+                        <Grid.Column key={publicAddress} widescreen={3} computer={4} tablet={8} mobile={16}>
                             <Profile user={{
                                 publicAddress
                             }}/>

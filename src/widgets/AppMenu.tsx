@@ -2,7 +2,7 @@ import * as React from "react";
 import {withRouter} from "react-router";
 import {Link} from "react-router-dom";
 import {Icon, Menu} from 'semantic-ui-react';
-
+import {isInjected} from "../utils/web3";
 
 class SignInPage extends React.Component<any> {
     public render(){
@@ -52,25 +52,27 @@ class SignInPage extends React.Component<any> {
             ) : (
                 <React.Fragment>
                     <Menu.Item
+                        disabled={!isInjected}
                         active={currentPath === '/sign-up'}
-                        as={Link}
+                        as={isInjected ? Link : null}
                         to={'/sign-up'}>
                         <Icon
                             size={'large'}
-                            color={'blue'}
-                            name={'address card outline'}/>
+                            color={isInjected ? 'blue' : 'orange'}
+                            name={isInjected ? 'address card outline' : 'warning sign'}/>
 
                         Создать аккаунт
                     </Menu.Item>
 
                     <Menu.Item
+                        disabled={!isInjected}
                         active={currentPath === '/sign-in'}
-                        as={Link}
+                        as={isInjected ? Link : null}
                         to={'/sign-in'}>
                         <Icon
                             size={'large'}
-                            color={'blue'}
-                            name={'lock open'}/>
+                            color={isInjected ? 'blue' : 'orange'}
+                            name={isInjected ? 'lock open' : 'warning sign'}/>
 
                         Авторизация
                     </Menu.Item>
